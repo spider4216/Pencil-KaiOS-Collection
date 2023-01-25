@@ -1,0 +1,74 @@
+<Shapes xmlns="http://www.evolus.vn/Namespace/Pencil"
+    xmlns:p="http://www.evolus.vn/Namespace/Pencil"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    id="ysirotenko-pencil-collection-1"
+    displayName="KaIOS Components"
+    description="Components for design apps for mobile operation system KaiOS"
+    author="Yuriy Sirotenko"
+    url="https://ysirotenko.com">
+<!--Your shapes go here -->
+    <Properties>
+        <PropertyGroup name="Header">
+            <Property name="strokeColor" type="Color" displayName="Default stroke color">#2A0361</Property>
+            <Property name="box" type="Dimension" displayName="Demension">240,26</Property>
+            <Property name="strokeStyle" type="StrokeStyle" displayName="Stroke style">0|</Property>
+            <Property name="fillColor" displayName="Background Color" type="Color">#2A0361</Property>
+        </PropertyGroup>
+    </Properties>
+
+    
+    <Shape id="KaiHeader" displayName="Header" icon="icons/Header-Purple.png">
+        <Properties>
+            <PropertyGroup name="Header">
+                <Property name="strokeColor" type="Color" displayName="Stroce color">
+                    <E>$$strokeColor</E>
+                </Property>
+
+                <Property name="box" type="Dimension" displayName="Demension">
+                    <E>$$box</E>
+                </Property>
+
+                <Property name="strokeStyle" type="StrokeStyle" displayName="Stroke style">
+                    <E>$$strokeStyle</E>
+                </Property>
+
+                <Property name="fillColor" displayName="Background Color" type="Color">
+                    <E>$$fillColor</E>
+                </Property>
+	    </PropertyGroup>
+
+            <PropertyGroup name="HeaderText">
+		<Property name="textContent" displayName="Content" type="PlainText"><![CDATA[Header]]></Property>
+		<Property name="textColor" displayName="Color" type="Color">#ffffff</Property>
+		<Property name="textAlign" displayName="Alignment" type="Alignment">1,1</Property>
+                <Property name="textFont" displayName="Text Font" type="Font">Open Sans|400|normal|17px</Property> 
+	    </PropertyGroup>
+        </Properties>
+
+        <Behaviors>
+            <For ref="myRect">
+                <Box>$box</Box>
+                <StrokeColor>$strokeColor</StrokeColor>
+                <StrokeStyle>$strokeStyle</StrokeStyle>
+                <Fill>$fillColor</Fill>
+	    </For>
+	    <For ref="text">
+		<Font>$textFont</Font>
+		<TextContent>$textContent</TextContent>
+	        <Color>$textColor</Color>
+		<BoxFit>
+		    <Arg>Bound.fromBox($box, $box.w / 2, $box.h / 2);</Arg>
+                    <Arg>$textAlign</Arg>
+		</BoxFit>
+	    </For>
+        </Behaviors>
+
+        <p:Content xmlns:p="http://www.evolus.vn/Namespace/Pencil" xmlns="http://www.w3.org/2000/svg">
+	    <rect id="myRect"/>
+            <text id="text"/>
+        </p:Content>
+    </Shape>
+
+
+</Shapes>
