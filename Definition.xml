@@ -36,14 +36,14 @@
                 <Property name="fillColor" displayName="Background Color" type="Color">
                     <E>$$fillColor</E>
                 </Property>
-	    </PropertyGroup>
+            </PropertyGroup>
 
             <PropertyGroup name="HeaderText">
-		<Property name="textContent" displayName="Content" type="PlainText"><![CDATA[Header]]></Property>
-		<Property name="textColor" displayName="Color" type="Color">#ffffff</Property>
-		<Property name="textAlign" displayName="Alignment" type="Alignment">1,1</Property>
+                <Property name="textContent" displayName="Content" type="PlainText"><![CDATA[Header]]></Property>
+                <Property name="textColor" displayName="Color" type="Color">#ffffff</Property>
+                <Property name="textAlign" displayName="Alignment" type="Alignment">1,1</Property>
                 <Property name="textFont" displayName="Text Font" type="Font">Open Sans|400|normal|17px</Property> 
-	    </PropertyGroup>
+	       </PropertyGroup>
         </Properties>
 
         <Behaviors>
@@ -52,21 +52,91 @@
                 <StrokeColor>$strokeColor</StrokeColor>
                 <StrokeStyle>$strokeStyle</StrokeStyle>
                 <Fill>$fillColor</Fill>
-	    </For>
-	    <For ref="text">
-		<Font>$textFont</Font>
-		<TextContent>$textContent</TextContent>
-	        <Color>$textColor</Color>
-		<BoxFit>
-		    <Arg>Bound.fromBox($box, $box.w / 2, $box.h / 2);</Arg>
+            </For>
+            <For ref="text">
+                <Font>$textFont</Font>
+                <TextContent>$textContent</TextContent>
+                <Color>$textColor</Color>
+                <BoxFit>
+                    <Arg>Bound.fromBox($box, $box.w / 2, $box.h / 2);</Arg>
                     <Arg>$textAlign</Arg>
-		</BoxFit>
-	    </For>
+                </BoxFit>
+            </For>
         </Behaviors>
 
         <p:Content xmlns:p="http://www.evolus.vn/Namespace/Pencil" xmlns="http://www.w3.org/2000/svg">
-	    <rect id="myRect"/>
+            <rect id="myRect"/>
             <text id="text"/>
+        </p:Content>
+    </Shape>
+
+    <Shape id="KaiTabs" displayName="Tabs" icon="icons/Tabs.png">
+        <Properties>
+            <PropertyGroup name="Tabs">
+                <Property name="strokeColor" type="Color" displayName="Stroce color">#ffffff</Property>
+                <Property name="box" type="Dimension" displayName="Demension">240,30</Property>
+                <Property name="strokeStyle" type="StrokeStyle" displayName="Stroke style">
+                    <E>$$strokeStyle</E>
+                </Property>
+                <Property name="fillColor" displayName="Background Color" type="Color">#ffffff</Property>
+            </PropertyGroup>
+            <PropertyGroup name="TabText">
+                <Property name="textContent1" displayName="Content" type="PlainText"><![CDATA[Tab One]]></Property>
+                <Property name="textContent2" displayName="Content" type="PlainText"><![CDATA[Tab Two]]></Property>
+                <Property name="textContent3" displayName="Content" type="PlainText"><![CDATA[Tab Three]]></Property>
+                <Property name="textColor" displayName="Color" type="Color">#6A6A6A</Property>
+                <Property name="textAlign" displayName="Alignment" type="Alignment">0,1</Property>
+                <Property name="textFont" displayName="Text Font" type="Font">Open Sans|400|normal|14px</Property> 
+                <Property name="selectedBox" type="Dimension" displayName="Demension">50,3</Property>
+                <Property name="fillSelectedColor" displayName="Selected Tab Color" type="Color">#2A0361</Property>
+           </PropertyGroup>
+        </Properties>
+            <Behaviors>
+                <For ref="myRect">
+                    <Box>$box</Box>
+                    <StrokeColor>$strokeColor</StrokeColor>
+                    <StrokeStyle>$strokeStyle</StrokeStyle>
+                    <Fill>$fillColor</Fill>
+                </For>
+                <For ref="tab1Text">
+                    <Font>$textFont</Font>
+                    <TextContent>$textContent1</TextContent>
+                    <Color>$textColor</Color>
+                    <BoxFit>
+                        <Arg>Bound.fromBox($box, 10, $box.h / 2);</Arg>
+                        <Arg>$textAlign</Arg>
+                    </BoxFit>
+                </For>
+                <For ref="tab2Text">
+                    <Font>$textFont</Font>
+                    <TextContent>$textContent2</TextContent>
+                    <Color>$textColor</Color>
+                    <BoxFit>
+                        <Arg>Bound.fromBox($box, 80, $box.h / 2);</Arg>
+                        <Arg>$textAlign</Arg>
+                    </BoxFit>
+                </For>
+                <For ref="tab3Text">
+                    <Font>$textFont</Font>
+                    <TextContent>$textContent3</TextContent>
+                    <Color>$textColor</Color>
+                    <BoxFit>
+                        <Arg>Bound.fromBox($box, 150, $box.h / 2);</Arg>
+                        <Arg>$textAlign</Arg>
+                    </BoxFit>
+                </For>
+                <For ref="selectedBorder">
+                    <Box>$selectedBox</Box>
+                    <Fill>$fillSelectedColor</Fill>
+                    <Bound>new Bound(80, $box.h - 5, $selectedBox.w, $selectedBox.h)</Bound>
+                </For>
+        </Behaviors>
+        <p:Content xmlns:p="http://www.evolus.vn/Namespace/Pencil" xmlns="http://www.w3.org/2000/svg">
+            <rect id="myRect"/>
+            <text id="tab1Text"/>
+            <text id="tab2Text"/>
+            <text id="tab3Text"/>
+            <rect id="selectedBorder"/>
         </p:Content>
     </Shape>
 
