@@ -140,5 +140,64 @@
         </p:Content>
     </Shape>
 
+    <Shape id="KaiSoftKeys" displayName="Soft Keys" icon="icons/SoftKeys.png">
+         <Properties>
+            <PropertyGroup name="SoftKeys">
+                <Property name="strokeColor" type="Color" displayName="Stroce color">#CCCCCC</Property>
+                <Property name="box" type="Dimension" displayName="Demension">240,30</Property>
+                <Property name="strokeStyle" type="StrokeStyle" displayName="Stroke style">
+                    <E>$$strokeStyle</E>
+                </Property>
+                <Property name="fillColor" displayName="Background Color" type="Color">#CCCCCC</Property>
+                <Property name="textLeft" displayName="Content" type="PlainText"><![CDATA[Left Key]]></Property>
+                <Property name="textSelect" displayName="Content" type="PlainText"><![CDATA[SELECT]]></Property>
+                <Property name="textRight" displayName="Content" type="PlainText"><![CDATA[Right Key]]></Property>
+                <Property name="textFont" displayName="Text Font" type="Font">Open Sans|600|normal|14px</Property> 
+                <Property name="textColor" displayName="Color" type="Color">#323232</Property>
+            </PropertyGroup>
+        </Properties>
+        <Behaviors>
+            <For ref="myRect">
+                <Box>$box</Box>
+                <StrokeColor>$strokeColor</StrokeColor>
+                <StrokeStyle>$strokeStyle</StrokeStyle>
+                <Fill>$fillColor</Fill>
+            </For>
+            <For ref="LeftText">
+                <Font>$textFont</Font>
+                <TextContent>$textLeft</TextContent>
+                <Color>$textColor</Color>
+                <BoxFit>
+                    <Arg>Bound.fromBox($box, 10, $box.h / 2);</Arg>
+                    <Arg>new Alignment(0,1)</Arg>
+                </BoxFit>
+            </For>
+            <For ref="SelectText">
+                <Font>$textFont</Font>
+                <TextContent>$textSelect</TextContent>
+                <Color>$textColor</Color>
+                <BoxFit>
+                    <Arg>Bound.fromBox($box, 0, $box.h / 2);</Arg>
+                    <Arg>new Alignment(1,1)</Arg>
+                </BoxFit>
+            </For>
+            <For ref="RightText">
+                <Font>$textFont</Font>
+                <TextContent>$textRight</TextContent>
+                <Color>$textColor</Color>
+                <BoxFit>
+                    <Arg>Bound.fromBox($box, 10, $box.h / 2);</Arg>
+                    <Arg>new Alignment(2,1)</Arg>
+                </BoxFit>
+            </For>
+        </Behaviors>
+        <p:Content xmlns:p="http://www.evolus.vn/Namespace/Pencil" xmlns="http://www.w3.org/2000/svg">
+            <rect id="myRect"/>
+            <text id="LeftText"/>
+            <text id="SelectText"/>
+            <text id="RightText"/>
+        </p:Content>
+    </Shape>
+
 
 </Shapes>
