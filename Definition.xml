@@ -199,5 +199,79 @@
         </p:Content>
     </Shape>
 
+    <Shape id="KaiButton" displayName="Button" icon="icons/Button.png">
+        <Properties>
+            <PropertyGroup name="ButtonDefault">
+                <Property name="strokeColor" type="Color" displayName="Stroce color">#8C8C8C</Property>
+                <Property name="box" type="Dimension" displayName="Demension">220,36</Property>
+                <Property name="strokeStyle" type="StrokeStyle" displayName="Stroke style">StrokeStyle.fromString("1|[1,1]");</Property>
+                <Property name="fillColor" displayName="Background Color" type="Color">#FFFFFF</Property>
+                <Property name="caption" displayName="Caption" type="PlainText"><![CDATA[Button]]></Property>
+                <Property name="captionFont" displayName="Caption Font" type="Font">Open Sans|400|normal|17px</Property>
+                <Property name="captionColor" displayName="Caption Color" type="Color">#323232</Property>
+            </PropertyGroup>
+        </Properties>
+
+        <Behaviors>
+            <For ref="myRect">
+                <Box>$box</Box>
+                <StrokeColor>$strokeColor</StrokeColor>
+                <StrokeStyle>$strokeStyle</StrokeStyle>
+                <Fill>$fillColor</Fill>
+                <Radius>
+                    <Arg>18</Arg>
+                    <Arg>18</Arg>
+                </Radius>
+            </For>
+            <For ref="caption">
+                <Font>$captionFont</Font>
+                <TextContent>$caption</TextContent>
+                <Color>$captionColor</Color>
+                <BoxFit>
+                    <Arg>Bound.fromBox($box, 0, $box.h / 2);</Arg>
+                    <Arg>new Alignment(1,1)</Arg>
+                </BoxFit>
+            </For>
+        </Behaviors>
+
+        <Actions>
+            <Action id="selected" displayName="Make selected">
+                <Impl>
+                    var captionColor = this.getProperty("captionColor");
+                    captionColor = Color.fromString("#FFFFFF");
+                    this.setProperty("captionColor", captionColor);
+
+                    var fillColor = this.getProperty("fillColor");
+                    fillColor = Color.fromString("#8000FF");
+                    this.setProperty("fillColor", fillColor);
+
+                    var strokeStyle = this.getProperty("strokeStyle");
+                    strokeStyle = StrokeStyle.fromString("0|");
+                    this.setProperty("strokeStyle", strokeStyle);
+                </Impl>
+            </Action>
+
+            <Action id="unselected" displayName="Make unselected">
+                <Impl>
+                    var captionColor = this.getProperty("captionColor");
+                    captionColor = Color.fromString("#323232");
+                    this.setProperty("captionColor", captionColor);
+
+                    var fillColor = this.getProperty("fillColor");
+                    fillColor = Color.fromString("#FFFFFF");
+                    this.setProperty("fillColor", fillColor);
+
+                    var strokeStyle = this.getProperty("strokeStyle");
+                    strokeStyle = StrokeStyle.fromString("1|[1,1]");
+                    this.setProperty("strokeStyle", strokeStyle);
+                </Impl>
+            </Action>
+        </Actions>
+        <p:Content xmlns:p="http://www.evolus.vn/Namespace/Pencil" xmlns="http://www.w3.org/2000/svg">
+            <rect id="myRect"/>
+            <text id="caption"/>
+        </p:Content>
+    </Shape>
+
 
 </Shapes>
