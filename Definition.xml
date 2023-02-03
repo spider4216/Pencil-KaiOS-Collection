@@ -328,5 +328,103 @@
         </p:Content>
     </Shape>
 
+    <Shape id="KaiRadio" displayName="Radio Button" icon="icons/Input.png">
+        <Properties>
+            <PropertyGroup name="RadioDefault">
+                <Property name="radio" type="Dimension" displayName="Demension">22,22</Property>
+                <Property name="radioStyle" type="StrokeStyle" displayName="Stroke style">2|</Property>
+                <Property name="radioStrokeColor" type="Color" displayName="Stroce color">#8C8C8C</Property>
+                <Property name="radio2" type="Dimension" displayName="Demension">12,12</Property>
+                <Property name="radio2Style" type="StrokeStyle" displayName="Stroke style">0|</Property>
+                <Property name="radio2StrokeColor" type="Color" displayName="Stroce color">#8C8C8C</Property>
+                <Property name="radio2FillColor" displayName="Background Color" type="Color">#8C8C8C</Property>
+                <Property name="radio2Visibility" displayName="Radio visibility" type="Bool">true</Property>  
+                <Property name="strokeColor" type="Color" displayName="Stroce color">#8C8C8C</Property>
+                <Property name="box" type="Dimension" displayName="Demension">240,60</Property>
+                <Property name="strokeStyle" type="StrokeStyle" displayName="Stroke style">1|[1,1];</Property>
+                <Property name="fillColor" displayName="Background Color" type="Color">#FFFFFF</Property>
+                <Property name="primaryText" displayName="Primary Text" type="PlainText"><![CDATA[Primary text]]></Property>
+                <Property name="primaryTextFont" displayName="Primary Text Font" type="Font">Open Sans|400|normal|17px</Property>
+                <Property name="primaryTextColor" displayName="Primary Text Color" type="Color">#323232</Property>
+                <Property name="secondaryText" displayName="Secondary Text" type="PlainText"><![CDATA[Secondary text]]></Property>
+                <Property name="secondaryTextFont" displayName="Secondary Text Font" type="Font">Open Sans|400|normal|14px</Property>
+                <Property name="secondaryTextColor" displayName="Secondary Text Color" type="Color">#6A6A6A</Property>
+            </PropertyGroup>
+        </Properties>
+
+        <Behaviors>
+            <For ref="myRect">
+                <Box>$box</Box>
+                <StrokeColor>$strokeColor</StrokeColor>
+                <StrokeStyle>$strokeStyle</StrokeStyle>
+                <Fill>$fillColor</Fill>
+            </For>
+            <For ref="primaryText">
+                <Font>$primaryTextFont</Font>
+                <TextContent>$primaryText</TextContent>
+                <Color>$primaryTextColor</Color>
+                <BoxFit>
+                    <Arg>Bound.fromBox($box, 10, 0);</Arg>
+                    <Arg>new Alignment(0,0)</Arg>
+                </BoxFit>
+            </For>
+            <For ref="secondaryText">
+                <Font>$secondaryTextFont</Font>
+                <TextContent>$secondaryText</TextContent>
+                <Color>$secondaryTextColor</Color>
+                <BoxFit>
+                    <Arg>Bound.fromBox($box, 10, 15);</Arg>
+                    <Arg>new Alignment(0,2)</Arg>
+                </BoxFit>
+            </For>
+            <For ref="radio">
+                <Box>$radio</Box>
+                <StrokeColor>$radioStrokeColor</StrokeColor>
+                <StrokeStyle>$radioStyle</StrokeStyle>
+                <Radius>
+                    <Arg>11</Arg>
+                    <Arg>11</Arg>
+                </Radius>
+                <Bound>new Bound(($box.w - $radio.w) - 10, ($box.h / 2) - ($radio.h / 2), $radio.w, $radio.h)</Bound>
+                <Fill>$fillColor</Fill>
+            </For>
+            <For ref="radio2">
+                <Box>$radio2</Box>
+                <StrokeColor>$radio2StrokeColor</StrokeColor>
+                <StrokeStyle>$radio2Style</StrokeStyle>
+                <Radius>
+                    <Arg>11</Arg>
+                    <Arg>11</Arg>
+                </Radius>
+                <Bound>new Bound(((($box.w - $radio.w) + ($radio2.w / 2))) - 11, (($box.h / 2) - ($radio.h / 2) + ($radio2.h / 2)) - 1, $radio2.w, $radio2.h)</Bound>
+                <Fill>$radio2FillColor</Fill>
+                <Visibility>$radio2Visibility</Visibility>
+            </For>
+        </Behaviors>
+        <Actions>
+            <Action id="RadioEnable" displayName="Enable">
+                <Impl>
+                    var radio2Visibility = this.getProperty("radio2Visibility");
+                    radio2Visibility = true;
+                    this.setProperty("radio2Visibility", radio2Visibility);
+                </Impl>
+            </Action>
+            <Action id="RadioDisale" displayName="Disable">
+                <Impl>
+                    var radio2Visibility = this.getProperty("radio2Visibility");
+                    radio2Visibility = false;
+                    this.setProperty("radio2Visibility", radio2Visibility);
+                </Impl>
+            </Action>
+        </Actions>
+        <p:Content xmlns:p="http://www.evolus.vn/Namespace/Pencil" xmlns="http://www.w3.org/2000/svg">
+            <rect id="myRect"/>
+            <text id="primaryText"/>
+            <text id="secondaryText"/>
+            <rect id="radio"/>
+            <rect id="radio2"/>
+        </p:Content>
+    </Shape>
+
 
 </Shapes>
