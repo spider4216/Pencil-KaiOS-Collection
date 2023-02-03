@@ -334,6 +334,7 @@
                 <Property name="radio" type="Dimension" displayName="Demension">22,22</Property>
                 <Property name="radioStyle" type="StrokeStyle" displayName="Stroke style">2|</Property>
                 <Property name="radioStrokeColor" type="Color" displayName="Stroce color">#8C8C8C</Property>
+                <Property name="radioFillColor" displayName="Radio Color" type="Color">#FFFFFF</Property>
                 <Property name="radio2" type="Dimension" displayName="Demension">12,12</Property>
                 <Property name="radio2Style" type="StrokeStyle" displayName="Stroke style">0|</Property>
                 <Property name="radio2StrokeColor" type="Color" displayName="Stroce color">#8C8C8C</Property>
@@ -386,7 +387,7 @@
                     <Arg>11</Arg>
                 </Radius>
                 <Bound>new Bound(($box.w - $radio.w) - 10, ($box.h / 2) - ($radio.h / 2), $radio.w, $radio.h)</Bound>
-                <Fill>$fillColor</Fill>
+                <Fill>$radioFillColor</Fill>
             </For>
             <For ref="radio2">
                 <Box>$radio2</Box>
@@ -404,6 +405,30 @@
         <Actions>
             <Action id="RadioEnable" displayName="Enable">
                 <Impl>
+                    var fillColor = this.getProperty("fillColor");
+                    fillColor = Color.fromString("#FFFFFF");;
+                    this.setProperty("fillColor", fillColor);
+
+                    var primaryTextColor = this.getProperty("primaryTextColor");
+                    primaryTextColor = Color.fromString("#323232");;
+                    this.setProperty("primaryTextColor", primaryTextColor);
+
+                    var secondaryTextColor = this.getProperty("secondaryTextColor");
+                    secondaryTextColor = Color.fromString("#6A6A6A");;
+                    this.setProperty("secondaryTextColor", secondaryTextColor);
+
+                    var radioStrokeColor = this.getProperty("radioStrokeColor");
+                    radioStrokeColor = Color.fromString("#8C8C8C");;
+                    this.setProperty("radioStrokeColor", radioStrokeColor);
+
+                    var radioFillColor = this.getProperty("radioFillColor");
+                    radioFillColor = Color.fromString("#FFFFFF");;
+                    this.setProperty("radioFillColor", radioFillColor);
+
+                    var radio2FillColor = this.getProperty("radio2FillColor");
+                    radio2FillColor = Color.fromString("#8C8C8C");;
+                    this.setProperty("radio2FillColor", radio2FillColor);
+
                     var radio2Visibility = this.getProperty("radio2Visibility");
                     radio2Visibility = true;
                     this.setProperty("radio2Visibility", radio2Visibility);
@@ -411,6 +436,101 @@
             </Action>
             <Action id="RadioDisale" displayName="Disable">
                 <Impl>
+                    var fillColor = this.getProperty("fillColor");
+                    fillColor = Color.fromString("#FFFFFF");;
+                    this.setProperty("fillColor", fillColor);
+
+                    var primaryTextColor = this.getProperty("primaryTextColor");
+                    primaryTextColor = Color.fromString("#323232");;
+                    this.setProperty("primaryTextColor", primaryTextColor);
+
+                    var secondaryTextColor = this.getProperty("secondaryTextColor");
+                    secondaryTextColor = Color.fromString("#6A6A6A");;
+                    this.setProperty("secondaryTextColor", secondaryTextColor);
+
+                    var radioStrokeColor = this.getProperty("radioStrokeColor");
+                    radioStrokeColor = Color.fromString("#8C8C8C");;
+                    this.setProperty("radioStrokeColor", radioStrokeColor);
+
+                    var radioFillColor = this.getProperty("radioFillColor");
+                    radioFillColor = Color.fromString("#FFFFFF");;
+                    this.setProperty("radioFillColor", radioFillColor);
+
+                    var radio2FillColor = this.getProperty("radio2FillColor");
+                    radio2FillColor = Color.fromString("#8C8C8C");;
+                    this.setProperty("radio2FillColor", radio2FillColor);
+
+                    var radio2Visibility = this.getProperty("radio2Visibility");
+                    radio2Visibility = false;
+                    this.setProperty("radio2Visibility", radio2Visibility);
+                </Impl>
+            </Action>
+            <Action id="RadioEnableSelected" displayName="Select and enable">
+                <Impl>
+                    var radio2Visibility = this.getProperty("radio2Visibility");
+                    radio2Visibility = true;
+                    this.setProperty("radio2Visibility", radio2Visibility);
+
+                    var fillColor = this.getProperty("fillColor");
+                    fillColor = Color.fromString("#8000FF");;
+                    this.setProperty("fillColor", fillColor);
+
+                    var primaryTextColor = this.getProperty("primaryTextColor");
+                    primaryTextColor = Color.fromString("#FFFFFF");;
+                    this.setProperty("primaryTextColor", primaryTextColor);
+
+                    var secondaryTextColor = this.getProperty("secondaryTextColor");
+                    secondaryTextColor = Color.fromString("#FFFFFF");;
+                    this.setProperty("secondaryTextColor", secondaryTextColor);
+
+                    var radioStrokeColor = this.getProperty("radioStrokeColor");
+                    radioStrokeColor = Color.fromString("#FFFFFF");;
+                    this.setProperty("radioStrokeColor", radioStrokeColor);
+
+                    var radioFillColor = this.getProperty("radioFillColor");
+                    radioFillColor = Color.fromString("#8000FF");;
+                    this.setProperty("radioFillColor", radioFillColor);
+
+                    var radio2FillColor = this.getProperty("radio2FillColor");
+                    radio2FillColor = Color.fromString("#FFFFFF");;
+                    this.setProperty("radio2FillColor", radio2FillColor);
+
+                    var radio2Visibility = this.getProperty("radio2Visibility");
+                    radio2Visibility = true;
+                    this.setProperty("radio2Visibility", radio2Visibility);
+                </Impl>
+            </Action>
+
+            <Action id="RadioDisableSelected" displayName="Select and disable">
+                <Impl>
+                    var radio2Visibility = this.getProperty("radio2Visibility");
+                    radio2Visibility = true;
+                    this.setProperty("radio2Visibility", radio2Visibility);
+
+                    var fillColor = this.getProperty("fillColor");
+                    fillColor = Color.fromString("#8000FF");;
+                    this.setProperty("fillColor", fillColor);
+
+                    var primaryTextColor = this.getProperty("primaryTextColor");
+                    primaryTextColor = Color.fromString("#FFFFFF");;
+                    this.setProperty("primaryTextColor", primaryTextColor);
+
+                    var secondaryTextColor = this.getProperty("secondaryTextColor");
+                    secondaryTextColor = Color.fromString("#FFFFFF");;
+                    this.setProperty("secondaryTextColor", secondaryTextColor);
+
+                    var radioStrokeColor = this.getProperty("radioStrokeColor");
+                    radioStrokeColor = Color.fromString("#FFFFFF");;
+                    this.setProperty("radioStrokeColor", radioStrokeColor);
+
+                    var radioFillColor = this.getProperty("radioFillColor");
+                    radioFillColor = Color.fromString("#8000FF");;
+                    this.setProperty("radioFillColor", radioFillColor);
+
+                    var radio2FillColor = this.getProperty("radio2FillColor");
+                    radio2FillColor = Color.fromString("#FFFFFF");;
+                    this.setProperty("radio2FillColor", radio2FillColor);
+
                     var radio2Visibility = this.getProperty("radio2Visibility");
                     radio2Visibility = false;
                     this.setProperty("radio2Visibility", radio2Visibility);
