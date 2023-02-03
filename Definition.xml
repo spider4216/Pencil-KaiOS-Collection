@@ -273,5 +273,60 @@
         </p:Content>
     </Shape>
 
+    <Shape id="KaiInput" displayName="Input" icon="icons/Input.png">
+        <Properties>
+            <PropertyGroup name="ButtonDefault">
+                <Property name="strokeColor" type="Color" displayName="Stroce color">#AAAAAA</Property>
+                <Property name="box" type="Dimension" displayName="Demension">220,26</Property>
+                <Property name="strokeStyle" type="StrokeStyle" displayName="Stroke style">StrokeStyle.fromString("1|[1,1]");</Property>
+                <Property name="fillColor" displayName="Background Color" type="Color">#FFFFFF</Property>
+                <Property name="text" displayName="Caption" type="PlainText"><![CDATA[Input hint]]></Property>
+                <Property name="textFont" displayName="Caption Font" type="Font">Open Sans|400|normal|14px</Property>
+                <Property name="textColor" displayName="Caption Color" type="Color">#AAAAAA</Property>
+            </PropertyGroup>
+        </Properties>
+
+        <Behaviors>
+            <For ref="myRect">
+                <Box>$box</Box>
+                <StrokeColor>$strokeColor</StrokeColor>
+                <StrokeStyle>$strokeStyle</StrokeStyle>
+                <Fill>$fillColor</Fill>
+                <Radius>
+                    <Arg>2</Arg>
+                    <Arg>2</Arg>
+                </Radius>
+            </For>
+            <For ref="text">
+                <Font>$textFont</Font>
+                <TextContent>$text</TextContent>
+                <Color>$textColor</Color>
+                <BoxFit>
+                    <Arg>Bound.fromBox($box, 10, $box.h / 2);</Arg>
+                    <Arg>new Alignment(0,1)</Arg>
+                </BoxFit>
+            </For>
+        </Behaviors>
+
+        <Actions>
+            <Action id="Typed" displayName="Make type">
+                <Impl>
+                    var textColor = this.getProperty("textColor");
+                    textColor = Color.fromString("#323232");
+                    this.setProperty("textColor", textColor);
+
+                    var text = this.getProperty("text");
+                    text = PlainText.fromString("Input text|");
+                    this.setProperty("text", text);
+                </Impl>
+            </Action>
+        </Actions>
+
+        <p:Content xmlns:p="http://www.evolus.vn/Namespace/Pencil" xmlns="http://www.w3.org/2000/svg">
+            <rect id="myRect"/>
+            <text id="text"/>
+        </p:Content>
+    </Shape>
+
 
 </Shapes>
