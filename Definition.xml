@@ -328,7 +328,7 @@
         </p:Content>
     </Shape>
 
-    <Shape id="KaiRadio" displayName="Radio Button" icon="icons/Input.png">
+    <Shape id="KaiRadio" displayName="Radio Button" icon="icons/Radio.png">
         <Properties>
             <PropertyGroup name="RadioDefault">
                 <Property name="radio" type="Dimension" displayName="Demension">22,22</Property>
