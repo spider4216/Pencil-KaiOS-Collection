@@ -339,7 +339,7 @@
                 <Property name="radio2Style" type="StrokeStyle" displayName="Stroke style">0|</Property>
                 <Property name="radio2StrokeColor" type="Color" displayName="Stroce color">#8C8C8C</Property>
                 <Property name="radio2FillColor" displayName="Background Color" type="Color">#8C8C8C</Property>
-                <Property name="radio2Visibility" displayName="Radio visibility" type="Bool">true</Property>  
+                <Property name="radio2Visibility" displayName="Radio visibility" type="Bool">true</Property>
                 <Property name="strokeColor" type="Color" displayName="Stroce color">#8C8C8C</Property>
                 <Property name="box" type="Dimension" displayName="Demension">240,60</Property>
                 <Property name="strokeStyle" type="StrokeStyle" displayName="Stroke style">1|[1,1];</Property>
@@ -927,6 +927,216 @@
             <path id="line" />
             <text id="primaryText"/>
             <text id="secondaryText"/>
+        </p:Content>
+    </Shape>
+    <Shape id="KaiCheckbox" displayName="Checkbox" icon="icons/Checkbox.png">
+        <Properties>
+            <PropertyGroup name="CheckboxDefault">
+                <Property name="checkbox" type="Dimension" displayName="Demension">22,22</Property>
+                <Property name="checkboxStyle" type="StrokeStyle" displayName="Stroke style">2|</Property>
+                <Property name="checkboxStrokeColor" type="Color" displayName="Stroce color">#8C8C8C</Property>
+                <Property name="checkboxFillColor" displayName="Checkbox Color" type="Color">#FFFFFF</Property>
+                <Property name="strokeColor" type="Color" displayName="Stroce color">#8C8C8C</Property>
+                <Property name="box" type="Dimension" displayName="Demension">240,60</Property>
+                <Property name="strokeStyle" type="StrokeStyle" displayName="Stroke style">1|[1,1];</Property>
+                <Property name="fillColor" displayName="Background Color" type="Color">#FFFFFF</Property>
+                <Property name="primaryText" displayName="Primary Text" type="PlainText"><![CDATA[Primary text]]></Property>
+                <Property name="primaryTextFont" displayName="Primary Text Font" type="Font">Open Sans|400|normal|17px</Property>
+                <Property name="primaryTextColor" displayName="Primary Text Color" type="Color">#323232</Property>
+                <Property name="secondaryText" displayName="Secondary Text" type="PlainText"><![CDATA[Secondary text]]></Property>
+                <Property name="secondaryTextFont" displayName="Secondary Text Font" type="Font">Open Sans|400|normal|14px</Property>
+                <Property name="secondaryTextColor" displayName="Secondary Text Color" type="Color">#6A6A6A</Property>
+            </PropertyGroup>
+           <PropertyGroup name="line">
+                <Property name="lineStrokeStyle" type="StrokeStyle" displayName="Stroke style">2|</Property>
+                <Property name="lineFillColor" displayName="Background Color" type="Color">#8C8C8C</Property>
+                <Property name="lineStrokeColor" type="Color" displayName="Stroce color">#8C8C8C</Property>
+                <Property name="lineVisibility" displayName="Checkbox visibility" type="Bool">true</Property>
+            </PropertyGroup>
+        </Properties>
+
+        <Behaviors>
+            <For ref="myRect">
+                <Box>$box</Box>
+                <StrokeColor>$strokeColor</StrokeColor>
+                <StrokeStyle>$strokeStyle</StrokeStyle>
+                <Fill>$fillColor</Fill>
+            </For>
+            <For ref="primaryText">
+                <Font>$primaryTextFont</Font>
+                <TextContent>$primaryText</TextContent>
+                <Color>$primaryTextColor</Color>
+                <BoxFit>
+                    <Arg>Bound.fromBox($box, 10, 0);</Arg>
+                    <Arg>new Alignment(0,0)</Arg>
+                </BoxFit>
+            </For>
+            <For ref="secondaryText">
+                <Font>$secondaryTextFont</Font>
+                <TextContent>$secondaryText</TextContent>
+                <Color>$secondaryTextColor</Color>
+                <BoxFit>
+                    <Arg>Bound.fromBox($box, 10, 15);</Arg>
+                    <Arg>new Alignment(0,2)</Arg>
+                </BoxFit>
+            </For>
+            <For ref="checkbox">
+                <Box>$checkbox</Box>
+                <StrokeColor>$checkboxStrokeColor</StrokeColor>
+                <StrokeStyle>$checkboxStyle</StrokeStyle>
+                <Radius>
+                    <Arg>9</Arg>
+                    <Arg>9</Arg>
+                </Radius>
+                <Bound>new Bound(($box.w - $checkbox.w) - 10, ($box.h / 2) - ($checkbox.h / 2), $checkbox.w, $checkbox.h)</Bound>
+                <Fill>$checkboxFillColor</Fill>
+            </For>
+            <For ref="line">
+                <D>
+                    [
+                    sk(($box.w - $checkbox.w / 2), (($box.h / 2) - 5), ($box.w - $checkbox.w / 2) - 10, ($box.h / 2) + ($checkbox.h / 2) - 8),
+                    sk(($box.w - $checkbox.w / 2) - 10, ($box.h / 2) + ($checkbox.h / 2) - 8, ($box.w - $checkbox.w / 2) - 15, ($box.h / 2) - ($checkbox.h / 2) + 8),
+                    ]
+                </D>
+                <StrokeColor>$lineStrokeColor</StrokeColor>
+                <StrokeStyle>$lineStrokeStyle</StrokeStyle>
+                <Fill>$lineFillColor</Fill>
+                <Visibility>$lineVisibility</Visibility>
+            </For>
+        </Behaviors>
+        <Actions>
+            <Action id="CheckboxEnable" displayName="Enable">
+                <Impl>
+                    var fillColor = this.getProperty("fillColor");
+                    fillColor = Color.fromString("#FFFFFF");;
+                    this.setProperty("fillColor", fillColor);
+
+                    var primaryTextColor = this.getProperty("primaryTextColor");
+                    primaryTextColor = Color.fromString("#323232");;
+                    this.setProperty("primaryTextColor", primaryTextColor);
+
+                    var secondaryTextColor = this.getProperty("secondaryTextColor");
+                    secondaryTextColor = Color.fromString("#6A6A6A");;
+                    this.setProperty("secondaryTextColor", secondaryTextColor);
+
+                    var checkboxStrokeColor = this.getProperty("checkboxStrokeColor");
+                    checkboxStrokeColor = Color.fromString("#8C8C8C");;
+                    this.setProperty("checkboxStrokeColor", checkboxStrokeColor);
+
+                    var checkboxFillColor = this.getProperty("checkboxFillColor");
+                    checkboxFillColor = Color.fromString("#FFFFFF");;
+                    this.setProperty("checkboxFillColor", checkboxFillColor);
+
+                    var lineStrokeColor = this.getProperty("lineStrokeColor");
+                    lineStrokeColor = Color.fromString("#8C8C8C");;
+                    this.setProperty("lineStrokeColor", lineStrokeColor);
+
+                    var lineVisibility = this.getProperty("lineVisibility");
+                    lineVisibility = true;
+                    this.setProperty("lineVisibility", lineVisibility);
+                </Impl>
+            </Action>
+            <Action id="CheckboxDisable" displayName="Disable">
+                <Impl>
+                    var fillColor = this.getProperty("fillColor");
+                    fillColor = Color.fromString("#FFFFFF");;
+                    this.setProperty("fillColor", fillColor);
+
+                    var primaryTextColor = this.getProperty("primaryTextColor");
+                    primaryTextColor = Color.fromString("#323232");;
+                    this.setProperty("primaryTextColor", primaryTextColor);
+
+                    var secondaryTextColor = this.getProperty("secondaryTextColor");
+                    secondaryTextColor = Color.fromString("#6A6A6A");;
+                    this.setProperty("secondaryTextColor", secondaryTextColor);
+
+                    var checkboxStrokeColor = this.getProperty("checkboxStrokeColor");
+                    checkboxStrokeColor = Color.fromString("#8C8C8C");;
+                    this.setProperty("checkboxStrokeColor", checkboxStrokeColor);
+
+                    var checkboxFillColor = this.getProperty("checkboxFillColor");
+                    checkboxFillColor = Color.fromString("#FFFFFF");;
+                    this.setProperty("checkboxFillColor", checkboxFillColor);
+
+                    var lineStrokeColor = this.getProperty("lineStrokeColor");
+                    lineStrokeColor = Color.fromString("#8C8C8C");;
+                    this.setProperty("lineStrokeColor", lineStrokeColor);
+
+                    var lineVisibility = this.getProperty("lineVisibility");
+                    lineVisibility = false;
+                    this.setProperty("lineVisibility", lineVisibility);
+                </Impl>
+            </Action>
+            <Action id="CheckboxEnableSelected" displayName="Select and enable">
+                <Impl>
+                    var fillColor = this.getProperty("fillColor");
+                    fillColor = Color.fromString("#8000FF");;
+                    this.setProperty("fillColor", fillColor);
+
+                    var primaryTextColor = this.getProperty("primaryTextColor");
+                    primaryTextColor = Color.fromString("#FFFFFF");;
+                    this.setProperty("primaryTextColor", primaryTextColor);
+
+                    var secondaryTextColor = this.getProperty("secondaryTextColor");
+                    secondaryTextColor = Color.fromString("#FFFFFF");;
+                    this.setProperty("secondaryTextColor", secondaryTextColor);
+
+                    var checkboxStrokeColor = this.getProperty("checkboxStrokeColor");
+                    checkboxStrokeColor = Color.fromString("#FFFFFF");;
+                    this.setProperty("checkboxStrokeColor", checkboxStrokeColor);
+
+                    var checkboxFillColor = this.getProperty("checkboxFillColor");
+                    checkboxFillColor = Color.fromString("#8000FF");;
+                    this.setProperty("checkboxFillColor", checkboxFillColor);
+
+                    var lineStrokeColor = this.getProperty("lineStrokeColor");
+                    lineStrokeColor = Color.fromString("#FFFFFF");;
+                    this.setProperty("lineStrokeColor", lineStrokeColor);
+
+                    var lineVisibility = this.getProperty("lineVisibility");
+                    lineVisibility = true;
+                    this.setProperty("lineVisibility", lineVisibility);
+                </Impl>
+            </Action>
+
+            <Action id="CheckboxDisableSelected" displayName="Select and disable">
+                <Impl>
+                    var fillColor = this.getProperty("fillColor");
+                    fillColor = Color.fromString("#8000FF");;
+                    this.setProperty("fillColor", fillColor);
+
+                    var primaryTextColor = this.getProperty("primaryTextColor");
+                    primaryTextColor = Color.fromString("#FFFFFF");;
+                    this.setProperty("primaryTextColor", primaryTextColor);
+
+                    var secondaryTextColor = this.getProperty("secondaryTextColor");
+                    secondaryTextColor = Color.fromString("#FFFFFF");;
+                    this.setProperty("secondaryTextColor", secondaryTextColor);
+
+                    var checkboxStrokeColor = this.getProperty("checkboxStrokeColor");
+                    checkboxStrokeColor = Color.fromString("#FFFFFF");;
+                    this.setProperty("checkboxStrokeColor", checkboxStrokeColor);
+
+                    var checkboxFillColor = this.getProperty("checkboxFillColor");
+                    checkboxFillColor = Color.fromString("#8000FF");;
+                    this.setProperty("checkboxFillColor", checkboxFillColor);
+
+                    var lineStrokeColor = this.getProperty("lineStrokeColor");
+                    lineStrokeColor = Color.fromString("#FFFFFF");;
+                    this.setProperty("lineStrokeColor", lineStrokeColor);
+
+                    var lineVisibility = this.getProperty("lineVisibility");
+                    lineVisibility = false;
+                    this.setProperty("lineVisibility", lineVisibility);
+                </Impl>
+            </Action>
+        </Actions>
+        <p:Content xmlns:p="http://www.evolus.vn/Namespace/Pencil" xmlns="http://www.w3.org/2000/svg">
+            <rect id="myRect"/>
+            <text id="primaryText"/>
+            <text id="secondaryText"/>
+            <rect id="checkbox"/>
+            <path id="line" />
         </p:Content>
     </Shape>
 </Shapes>
