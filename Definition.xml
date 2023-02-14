@@ -805,5 +805,128 @@
         </p:Content>
     </Shape>
 
+    <Shape id="KaiTwoLineListItem" displayName="Two line list item" icon="icons/Single-line-list-item.png">
+        <Properties>
+            <PropertyGroup name="twoLineListItem">
+                <Property name="box" type="Dimension" displayName="Demension">240,60</Property>
+                <Property name="strokeStyle" type="StrokeStyle" displayName="Stroke style">1|[1,1];</Property>
+                <Property name="fillColor" displayName="Background Color" type="Color">#FFFFFF</Property>
+                <Property name="strokeColor" type="Color" displayName="Stroce color">#8C8C8C</Property>
+            </PropertyGroup>
 
+            <PropertyGroup name="PrimaryText">
+                <Property name="primaryText" displayName="Primary Text" type="PlainText"><![CDATA[Two-line list item]]></Property>
+                <Property name="primaryTextFont" displayName="Primary Text Font" type="Font">Open Sans|400|normal|17px</Property>
+                <Property name="primaryTextColor" displayName="Primary Text Color" type="Color">#323232</Property>
+           </PropertyGroup>
+
+           <PropertyGroup name="SecondaryText">
+                <Property name="secondaryText" displayName="Secondary Text" type="PlainText"><![CDATA[Secondary text]]></Property>
+                <Property name="secondaryTextFont" displayName="Secondary Text Font" type="Font">Open Sans|400|normal|14px</Property>
+                <Property name="secondaryTextColor" displayName="Secondary Text Color" type="Color">#6A6A6A</Property>
+           </PropertyGroup>
+
+           <PropertyGroup name="line">
+                <Property name="lineStrokeStyle" type="StrokeStyle" displayName="Stroke style">2|</Property>
+                <Property name="lineFillColor" displayName="Background Color" type="Color">#8C8C8C</Property>
+                <Property name="lineStrokeColor" type="Color" displayName="Stroce color">#8C8C8C</Property>
+            </PropertyGroup>
+        </Properties>
+
+        <Behaviors>
+            <For ref="myRect">
+                <Box>$box</Box>
+                <StrokeColor>$strokeColor</StrokeColor>
+                <StrokeStyle>$strokeStyle</StrokeStyle>
+                <Fill>$fillColor</Fill>
+            </For>
+            <For ref="primaryText">
+                <Font>$primaryTextFont</Font>
+                <TextContent>$primaryText</TextContent>
+                <Color>$primaryTextColor</Color>
+                <BoxFit>
+                    <Arg>Bound.fromBox($box, 10, 10);</Arg>
+                    <Arg>new Alignment(0,0)</Arg>
+                </BoxFit>
+            </For>
+            <For ref="secondaryText">
+                <Font>$secondaryTextFont</Font>
+                <TextContent>$secondaryText</TextContent>
+                <Color>$secondaryTextColor</Color>
+                <BoxFit>
+                    <Arg>Bound.fromBox($box, 10, 15);</Arg>
+                    <Arg>new Alignment(0,2)</Arg>
+                </BoxFit>
+            </For>
+            <For ref="line">
+                <D>
+                    [
+                    sk($box.w - 15, (($box.h / 2) - 5), $box.w - 10, ($box.h / 2) + 0.5),
+                    sk($box.w - 10, ($box.h / 2) - 0.5, $box.w - 15, (($box.h / 2) + 5)),
+                    ]
+                </D>
+                <StrokeColor>$lineStrokeColor</StrokeColor>
+                <StrokeStyle>$lineStrokeStyle</StrokeStyle>
+                <Fill>$lineFillColor</Fill>
+            </For>
+        </Behaviors>
+
+        <Actions>
+            <Action id="Selected" displayName="Select">
+                <Impl>
+                    var fillColor = this.getProperty("fillColor");
+                    fillColor = Color.fromString("#8000FF");
+                    this.setProperty("fillColor", fillColor);
+
+                    var primaryTextColor = this.getProperty("primaryTextColor");
+                    primaryTextColor = Color.fromString("#FFFFFF");
+                    this.setProperty("primaryTextColor", primaryTextColor);
+
+                    var secondaryTextColor = this.getProperty("secondaryTextColor");
+                    secondaryTextColor = Color.fromString("#FFFFFF");
+                    this.setProperty("secondaryTextColor", secondaryTextColor);
+
+                    var lineStrokeColor = this.getProperty("lineStrokeColor");
+                    lineStrokeColor = Color.fromString("#FFFFFF");
+                    this.setProperty("lineStrokeColor", lineStrokeColor);
+
+                    var strokeColor = this.getProperty("strokeColor");
+                    strokeColor = Color.fromString("#8000FF");
+                    this.setProperty("strokeColor", strokeColor);
+                </Impl>
+            </Action>
+
+            <Action id="Unselected" displayName="Unselect">
+                <Impl>
+                    var fillColor = this.getProperty("fillColor");
+                    fillColor = Color.fromString("#FFFFFF");
+                    this.setProperty("fillColor", fillColor);
+
+                    var primaryTextColor = this.getProperty("primaryTextColor");
+                    primaryTextColor = Color.fromString("#323232");
+                    this.setProperty("primaryTextColor", primaryTextColor);
+
+                    var secondaryTextColor = this.getProperty("secondaryTextColor");
+                    secondaryTextColor = Color.fromString("#6A6A6A");
+                    this.setProperty("secondaryTextColor", secondaryTextColor);
+
+                    var lineStrokeColor = this.getProperty("lineStrokeColor");
+                    lineStrokeColor = Color.fromString("#8C8C8C");
+                    this.setProperty("lineStrokeColor", lineStrokeColor);
+
+                    var strokeColor = this.getProperty("strokeColor");
+                    strokeColor = Color.fromString("#8C8C8C");
+                    this.setProperty("strokeColor", strokeColor);
+                </Impl>
+            </Action>
+        </Actions>
+
+
+        <p:Content xmlns:p="http://www.evolus.vn/Namespace/Pencil" xmlns="http://www.w3.org/2000/svg">
+            <rect id="myRect"/>
+            <path id="line" />
+            <text id="primaryText"/>
+            <text id="secondaryText"/>
+        </p:Content>
+    </Shape>
 </Shapes>
