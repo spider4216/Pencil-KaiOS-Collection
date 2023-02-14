@@ -805,7 +805,7 @@
         </p:Content>
     </Shape>
 
-    <Shape id="KaiTwoLineListItem" displayName="Two line list item" icon="icons/Single-line-list-item.png">
+    <Shape id="KaiTwoLineListItem" displayName="Two line list item" icon="icons/Two-line-list-item.png">
         <Properties>
             <PropertyGroup name="twoLineListItem">
                 <Property name="box" type="Dimension" displayName="Demension">240,60</Property>
