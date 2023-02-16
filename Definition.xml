@@ -1139,4 +1139,132 @@
             <path id="line" />
         </p:Content>
     </Shape>
+    <Shape id="KaiProgress" displayName="Progress" icon="icons/Progress.png">
+        <Properties>
+            <PropertyGroup name="ProgressPlace">
+                <Property name="box" type="Dimension" displayName="Demension">240,60</Property>
+                <Property name="strokeStyle" type="StrokeStyle" displayName="Stroke style">1|[1,1];</Property>
+                <Property name="fillColor" displayName="Background Color" type="Color">#FFFFFF</Property>
+                <Property name="strokeColor" type="Color" displayName="Stroce color">#8C8C8C</Property>
+            </PropertyGroup>
+            <PropertyGroup name="ProgressText">
+                <Property name="primaryText" displayName="Primary Text" type="PlainText"><![CDATA[Downloading]]></Property>
+                <Property name="primaryTextFont" displayName="Primary Text Font" type="Font">Open Sans|400|normal|17px</Property>
+                <Property name="primaryTextColor" displayName="Primary Text Color" type="Color">#323232</Property>
+            </PropertyGroup>
+            <PropertyGroup name="ProgressIndicator">
+                <Property name="indicator" type="Dimension" displayName="Demension">220,5</Property>
+                <Property name="indicatorStrokeStyle" type="StrokeStyle" displayName="Stroke style">0|</Property>
+                <Property name="indicatorFillColor" displayName="Background Color" type="Color">#8000FF</Property>
+            </PropertyGroup>
+            <PropertyGroup name="ProgressIndicator2">
+                <Property name="indicator2" type="Dimension" displayName="Demension">73,5</Property>
+                <Property name="indicator2StrokeStyle" type="StrokeStyle" displayName="Stroke style">0|</Property>
+                <Property name="indicator2FillColor" displayName="Background Color" type="Color">#8C8C8C</Property>
+            </PropertyGroup>
+            <PropertyGroup name="ProgressIndicator3">
+                <Property name="indicator3" type="Dimension" displayName="Demension">3,5</Property>
+                <Property name="indicator3StrokeStyle" type="StrokeStyle" displayName="Stroke style">0|</Property>
+                <Property name="indicator3FillColor" displayName="Background Color" type="Color">#FFFFFF</Property>
+            </PropertyGroup>
+        </Properties>
+        <Behaviors>
+            <For ref="myRect">
+                <Box>$box</Box>
+                <StrokeColor>$strokeColor</StrokeColor>
+                <StrokeStyle>$strokeStyle</StrokeStyle>
+                <Fill>$fillColor</Fill>
+            </For>
+            <For ref="primaryText">
+                <Font>$primaryTextFont</Font>
+                <TextContent>$primaryText</TextContent>
+                <Color>$primaryTextColor</Color>
+                <BoxFit>
+                    <Arg>Bound.fromBox($box, 12, 0);</Arg>
+                    <Arg>new Alignment(0,0)</Arg>
+                </BoxFit>
+            </For>
+            <For ref="indicator">
+                <Box>$indicator</Box>
+                <StrokeStyle>$indicatorStrokeStyle</StrokeStyle>
+                <Fill>$indicatorFillColor</Fill>
+                <Bound>new Bound(10, $box.h - $indicator.h - 12, $indicator.w, $indicator.h);</Bound>
+                <Radius>
+                    <Arg>2.5</Arg>
+                    <Arg>2.5</Arg>
+                </Radius>
+            </For>
+            <For ref="indicator2">
+                <Box>$indicator2</Box>
+                <StrokeStyle>$indicator2StrokeStyle</StrokeStyle>
+                <Fill>$indicator2FillColor</Fill>
+                <Bound>new Bound($box.w - $indicator2.w - 10, $box.h - $indicator.h - 12, $indicator2.w, $indicator2.h);</Bound>
+                <Radius>
+                    <Arg>2.5</Arg>
+                    <Arg>2.5</Arg>
+                </Radius>
+            </For>
+            <For ref="indicator3">
+                <Box>$indicator3</Box>
+                <StrokeStyle>$indicator3StrokeStyle</StrokeStyle>
+                <Fill>$indicator3FillColor</Fill>
+                <Bound>new Bound($box.w - $indicator2.w - 10, $box.h - $indicator.h - 12, $indicator3.w, $indicator3.h);</Bound>
+            </For>
+        </Behaviors>
+        <Actions>
+            <Action id="Unselected" displayName="Unselect">
+                <Impl>
+                    var fillColor = this.getProperty("fillColor");
+                    fillColor = Color.fromString("#FFFFFF");;
+                    this.setProperty("fillColor", fillColor);
+
+                    var strokeColor = this.getProperty("strokeColor");
+                    strokeColor = Color.fromString("#8C8C8C");;
+                    this.setProperty("strokeColor", strokeColor);
+
+                    var primaryTextColor = this.getProperty("primaryTextColor");
+                    primaryTextColor = Color.fromString("#323232");;
+                    this.setProperty("primaryTextColor", primaryTextColor);
+                    
+                    var indicatorFillColor = this.getProperty("indicatorFillColor");
+                    indicatorFillColor = Color.fromString("#8000FF");;
+                    this.setProperty("indicatorFillColor", indicatorFillColor);
+                    
+                    var indicator3FillColor = this.getProperty("indicator3FillColor");
+                    indicator3FillColor = Color.fromString("#FFFFFF");;
+                    this.setProperty("indicator3FillColor", indicator3FillColor);
+                </Impl>
+            </Action>
+            <Action id="Selected" displayName="Select">
+                <Impl>
+                    var fillColor = this.getProperty("fillColor");
+                    fillColor = Color.fromString("#8000FF");;
+                    this.setProperty("fillColor", fillColor);
+
+                    var strokeColor = this.getProperty("strokeColor");
+                    strokeColor = Color.fromString("#8000FF");;
+                    this.setProperty("strokeColor", strokeColor);
+
+                    var primaryTextColor = this.getProperty("primaryTextColor");
+                    primaryTextColor = Color.fromString("#FFFFFF");;
+                    this.setProperty("primaryTextColor", primaryTextColor);
+                    
+                    var indicatorFillColor = this.getProperty("indicatorFillColor");
+                    indicatorFillColor = Color.fromString("#FFFFFF");;
+                    this.setProperty("indicatorFillColor", indicatorFillColor);
+                    
+                    var indicator3FillColor = this.getProperty("indicator3FillColor");
+                    indicator3FillColor = Color.fromString("#8000FF");;
+                    this.setProperty("indicator3FillColor", indicator3FillColor);
+                </Impl>
+            </Action>
+        </Actions>
+        <p:Content xmlns:p="http://www.evolus.vn/Namespace/Pencil" xmlns="http://www.w3.org/2000/svg">
+            <rect id="myRect"/>
+            <text id="primaryText"/>
+            <rect id="indicator"/>
+            <rect id="indicator2"/>
+            <rect id="indicator3"/>
+        </p:Content>
+    </Shape>
 </Shapes>
